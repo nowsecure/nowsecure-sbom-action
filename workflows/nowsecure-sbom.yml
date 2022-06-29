@@ -1,0 +1,31 @@
+# An example workflow using the NowSecure Mobile SBOM action that runs an
+# application against NowSecure Platform and generates SBOM results which are
+# submitted to the Dependency submission API.
+# This action is run each time a commit is pushed to the "main" branch.
+
+name: "NowSecure Mobile SBOM"
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+    branches: [main]
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: NowSecure Mobile SBOM
+        uses: nowsecure/nowsecure-sbom-action@v1
+        timeout-minutes: 60
+        with:
+          token: ${{ secrets.NS_TOKEN }}
+          # TODO: Replace app file with .apk or .ipa.
+          app_file: app.apk
+          # TODO: Replace the Group ID.
+          group_id: "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
