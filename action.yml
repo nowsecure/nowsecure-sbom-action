@@ -14,14 +14,14 @@ runs:
   using: "composite"
   steps:
         - id: upload
-          uses: nowsecure/nowsecure-action/upload-app@c8df1e8d5e9cb33f282577570eea24832673feab
+          uses: nowsecure/nowsecure-action/upload-app@3ca0742f8c449b2919ff06b3ba906e95e4ff1e34
           with:
             token: ${{ inputs.token }}
             app_file: ${{ inputs.app_file }}
             group_id: ${{ inputs.group_id }}
 
         - id: pull_report
-          uses: nowsecure/nowsecure-action/convert-sarif@c8df1e8d5e9cb33f282577570eea24832673feab
+          uses: nowsecure/nowsecure-action/convert-sarif@3ca0742f8c449b2919ff06b3ba906e95e4ff1e34
           with:
             report_id: ${{ steps.upload.outputs.report_id }}
             token: ${{ inputs.token }}
