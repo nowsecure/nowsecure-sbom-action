@@ -35,10 +35,10 @@ After the application build step run the NowSecure Mobile SBOM action:
 
 ```yml
 - name: NowSecure upload app
-  uses: nowsecure/nowsecure-sbom-action@v1
+  uses: nowsecure/nowsecure-sbom-action@v2
   timeout-minutes: 60
   with:
-    token: ${{ secrets.NS_TOKEN }}
+    platform_token: ${{ secrets.NS_TOKEN }}
     app_file: $APPLICATION_PATH # REPLACE: The path to an .ipa or .apk
     group_id: $GROUP_ID         # REPLACE: NowSecure Group ID
 ```
