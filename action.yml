@@ -1,7 +1,7 @@
 name: "NowSecure: Mobile SBOM"
 description: "Generate a Mobile SBOM for an application and submit to the Dependency submission API"
 inputs:
-  token:
+  platform_token:
     required: true
     description: "NowSecure Platform token."
   group_id:
@@ -14,17 +14,17 @@ runs:
   using: "composite"
   steps:
         - id: upload
-          uses: nowsecure/nowsecure-action/upload-app@bc67c2d39053a63c6e7e03d970397981a57261bc
+          uses: nowsecure/nowsecure-action/upload-app@v3
           with:
-            token: ${{ inputs.token }}
+            platform_token: ${{ inputs.token }}
             app_file: ${{ inputs.app_file }}
             group_id: ${{ inputs.group_id }}
 
         - id: pull_report
-          uses: nowsecure/nowsecure-action/convert-sarif@bc67c2d39053a63c6e7e03d970397981a57261bc
+          uses: nowsecure/nowsecure-action/convert-sarif@v3
           with:
             report_id: ${{ steps.upload.outputs.report_id }}
-            token: ${{ inputs.token }}
+            platform_token: ${{ inputs.token }}
             group_id: ${{ inputs.group_id }}
             enable_dependencies: true
             enable_sarif: false
