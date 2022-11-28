@@ -16,7 +16,7 @@ runs:
         - id: upload
           uses: nowsecure/nowsecure-action/upload-app@v3
           with:
-            platform_token: ${{ inputs.token }}
+            platform_token: ${{ inputs.platform_token }}
             app_file: ${{ inputs.app_file }}
             group_id: ${{ inputs.group_id }}
 
@@ -24,7 +24,7 @@ runs:
           uses: nowsecure/nowsecure-action/convert-sarif@v3
           with:
             report_id: ${{ steps.upload.outputs.report_id }}
-            platform_token: ${{ inputs.token }}
+            platform_token: ${{ inputs.platform_token }}
             group_id: ${{ inputs.group_id }}
             enable_dependencies: true
             enable_sarif: false
