@@ -14,14 +14,14 @@ runs:
   using: "composite"
   steps:
         - id: upload
-          uses: nowsecure/nowsecure-action/upload-app@v3
+          uses: nowsecure/nowsecure-action/upload-app@v4
           with:
             platform_token: ${{ inputs.platform_token }}
             app_file: ${{ inputs.app_file }}
             group_id: ${{ inputs.group_id }}
 
         - id: pull_report
-          uses: nowsecure/nowsecure-action/convert-sarif@v3
+          uses: nowsecure/nowsecure-action/convert-sarif@v4
           with:
             report_id: ${{ steps.upload.outputs.report_id }}
             platform_token: ${{ inputs.platform_token }}
