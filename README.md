@@ -35,7 +35,7 @@ After the application build step run the NowSecure Mobile SBOM action:
 
 ```yml
 - name: NowSecure upload app
-  uses: nowsecure/nowsecure-sbom-action@v2
+  uses: nowsecure/nowsecure-sbom-action@v3
   timeout-minutes: 60
   with:
     platform_token: ${{ secrets.NS_TOKEN }}
